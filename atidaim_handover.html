@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תיק חפיפה – עתידאים</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cyan:#00A878;
+  --teal:#007A58;
+  --dark-teal:#005540;
+  --black:#1B2A3A;
+  --bg:#FFFFFF;
+  --card:#F4FAF7;
+  --card2:#E8F5EE;
+  --border:#B8DAC8;
+  --text:#1B2A3A;
+  --muted:#3D6A56;
+  --green:#006B42;
+  --orange:#B85A00;
+  --purple:#4A2FA0;
+  --blue:#0077AA;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);direction:rtl;overflow-x:hidden;line-height:1.7;}
+
+/* ─── HERO HEADER ─── */
+header{position:relative;background:#0D2318;overflow:hidden;border-bottom:3px solid var(--cyan);}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 10% 50%,rgba(0,168,120,0.18) 0%,transparent 70%),radial-gradient(ellipse 50% 80% at 90% 20%,rgba(0,80,50,0.25) 0%,transparent 65%);pointer-events:none;}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:28px 56px 0;position:relative;z-index:2;}
+.logo-img{height:52px;}
+.header-badge{background:rgba(0,200,140,0.15);border:1px solid rgba(0,200,140,0.35);border-radius:30px;padding:6px 18px;font-size:0.78rem;color:#7FFFD4;letter-spacing:0.05em;font-weight:500;}
+.header-content{padding:40px 56px 56px;position:relative;z-index:2;max-width:800px;}
+.header-tag{font-size:0.72rem;font-weight:700;color:#7FFFD4;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.header-tag::before{content:'';width:28px;height:2px;background:#7FFFD4;display:inline-block;}
+h1{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:900;line-height:1.12;color:#FFFFFF;margin-bottom:16px;}
+h1 span{color:#5CF5C0;}
+.header-sub{font-size:1rem;color:#A8D4C0;font-weight:300;max-width:560px;line-height:1.75;}
+.welcome-note{margin-top:20px;background:rgba(0,180,120,0.12);border:1px solid rgba(0,180,120,0.3);border-radius:12px;padding:16px 20px;font-size:0.875rem;color:#C8F0E0;line-height:1.75;display:flex;gap:12px;align-items:flex-start;}
+.welcome-note-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px;}
+
+/* BIRDS */
+.birds-container{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:hidden;}
+.bird{position:absolute;opacity:0;animation:birdFly 12s ease-in-out infinite;fill:#5CF5C0;}
+.bird:nth-child(1){top:20%;left:-80px;animation-delay:0s;animation-duration:14s;}
+.bird:nth-child(2){top:55%;left:-60px;animation-delay:3s;animation-duration:18s;}
+.bird:nth-child(3){top:35%;left:-100px;animation-delay:6s;animation-duration:16s;}
+@keyframes birdFly{0%{opacity:0;transform:translateX(0) translateY(0);}10%{opacity:1;}50%{transform:translateX(55vw) translateY(-40px);}90%{opacity:0.4;}100%{opacity:0;transform:translateX(120vw) translateY(-80px);}}
+
+/* ─── NAV ─── */
+.toc-bar{background:#0D2318;border-bottom:2px solid var(--border);padding:0 40px;display:flex;gap:0;position:sticky;top:0;z-index:100;overflow-x:auto;scrollbar-width:none;}
+.toc-bar::-webkit-scrollbar{display:none;}
+.toc-item{padding:15px 16px;font-size:0.79rem;font-weight:500;color:#A8D4C0;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;text-decoration:none;}
+.toc-item:hover,.toc-item.active{color:#5CF5C0;border-bottom-color:#5CF5C0;}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--teal));z-index:200;transition:width 0.1s;width:0%;}
+
+/* ─── MAIN ─── */
+main{max-width:1100px;margin:0 auto;padding:64px 40px 120px;position:relative;}
+.section{margin-bottom:80px;scroll-margin-top:64px;}
+
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:32px;}
+.section-icon{width:46px;height:46px;background:linear-gradient(135deg,var(--teal),var(--dark-teal));border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0;box-shadow:0 4px 16px rgba(0,120,80,0.2);}
+h2{font-size:1.55rem;font-weight:800;color:#0D1E2E;}
+h2 small{font-size:0.85rem;font-weight:400;color:var(--muted);margin-right:10px;}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-bottom:24px;}
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:26px;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;}
+.card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,120,80,0.12);}
+.card-icon{font-size:1.7rem;margin-bottom:14px;}
+.card-title{font-size:0.98rem;font-weight:700;color:var(--teal);margin-bottom:8px;}
+.card-body{font-size:0.875rem;color:var(--muted);line-height:1.7;}
+
+/* INFO BLOCK */
+.info-block{background:#FFFFFF;border:1.5px solid var(--border);border-radius:16px;padding:30px 34px;margin-bottom:22px;box-shadow:0 2px 12px rgba(0,80,60,0.06);}
+.info-block h3{font-size:1rem;font-weight:700;color:var(--teal);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.info-block h3::before{content:'';width:4px;height:18px;background:var(--cyan);border-radius:2px;display:inline-block;flex-shrink:0;}
+
+/* FANCY LIST */
+ul.fancy-list{list-style:none;padding:0;}
+ul.fancy-list li{padding:10px 0;border-bottom:1px solid #D0E8DA;font-size:0.9rem;color:var(--text);display:flex;gap:12px;align-items:flex-start;}
+ul.fancy-list li:last-child{border-bottom:none;}
+ul.fancy-list li::before{content:'◈';color:var(--cyan);font-size:0.7rem;margin-top:4px;flex-shrink:0;}
+
+/* CHECKLIST */
+.checklist{list-style:none;padding:0;}
+.checklist li{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #D0E8DA;font-size:0.9rem;color:var(--text);}
+.checklist li:last-child{border-bottom:none;}
+.checklist-box{width:24px;height:24px;border:2px solid var(--teal);border-radius:7px;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.25s;background:#fff;}
+.checklist-box:hover{background:rgba(0,168,120,0.08);border-color:var(--cyan);}
+.checklist-box.done{background:var(--teal);border-color:var(--teal);}
+.checklist-box.done::after{content:'\2713';color:#ffffff !important;font-size:0.85rem;font-weight:900;display:block;line-height:1;}
+.checklist li span{flex:1;color:var(--text);}
+.checklist li.checked span{text-decoration:line-through;color:#9BBCCC;}
+
+/* TIMELINE */
+.timeline{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;}
+.timeline-card{background:var(--card2);border:1.5px solid var(--border);border-radius:14px;padding:22px;box-shadow:0 1px 6px rgba(0,80,60,0.05);}
+.timeline-month{font-size:0.7rem;font-weight:800;color:var(--teal);letter-spacing:0.14em;margin-bottom:12px;text-transform:uppercase;}
+.timeline-tasks{list-style:none;padding:0;}
+.timeline-tasks li{font-size:0.82rem;color:var(--muted);padding:5px 0;display:flex;align-items:flex-start;gap:8px;}
+.timeline-tasks li::before{content:'';width:5px;height:5px;background:var(--cyan);border-radius:50%;flex-shrink:0;margin-top:7px;}
+
+/* STAKEHOLDERS */
+.stakeholder-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;}
+.stakeholder-card{background:#FFFFFF;border:1.5px solid var(--border);border-radius:14px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;transition:all 0.2s;box-shadow:0 1px 6px rgba(0,80,60,0.05);}
+.stakeholder-card:hover{border-color:var(--cyan);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,120,80,0.1);}
+.stakeholder-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--dark-teal));border:2px solid var(--cyan);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.stakeholder-name{font-size:0.88rem;font-weight:700;color:#0D1E2E;margin-bottom:3px;}
+.stakeholder-role{font-size:0.75rem;color:var(--teal);margin-bottom:6px;font-weight:600;}
+.stakeholder-desc{font-size:0.78rem;color:var(--muted);line-height:1.6;}
+
+/* TABLE */
+.fancy-table{width:100%;border-collapse:collapse;font-size:0.875rem;}
+.fancy-table th{background:rgba(0,120,80,0.08);color:var(--teal);font-weight:700;padding:14px 18px;text-align:right;border-bottom:2px solid var(--border);}
+.fancy-table td{padding:13px 18px;color:var(--text);border-bottom:1px solid #D0E8DA;vertical-align:top;line-height:1.6;}
+.fancy-table tr:hover td{background:rgba(0,120,80,0.03);}
+.table-wrap{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;overflow-x:auto;margin-bottom:22px;box-shadow:0 2px 10px rgba(0,80,60,0.06);}
+
+/* HIGHLIGHTS */
+.highlight{background:#EDF7F2;border:1.5px solid #90D4B0;border-right:4px solid var(--cyan);border-radius:10px;padding:18px 22px;margin-bottom:22px;font-size:0.9rem;color:var(--text);line-height:1.8;}
+.highlight strong{color:var(--teal);}
+.highlight-green{background:#EBF7F1;border:1.5px solid #9DD4B8;border-right:4px solid var(--green);border-radius:10px;padding:18px 22px;margin-bottom:22px;font-size:0.9rem;color:var(--text);line-height:1.8;}
+.highlight-green strong{color:var(--green);}
+.highlight-orange{background:#FDF3E7;border:1.5px solid #E8C088;border-right:4px solid var(--orange);border-radius:10px;padding:18px 22px;margin-bottom:22px;font-size:0.9rem;color:var(--text);line-height:1.8;}
+.highlight-orange strong{color:var(--orange);}
+.highlight-purple{background:#F0EEFA;border:1.5px solid #B8A8E8;border-right:4px solid var(--purple);border-radius:10px;padding:18px 22px;margin-bottom:22px;font-size:0.9rem;color:var(--text);line-height:1.8;}
+.highlight-purple strong{color:var(--purple);}
+.highlight-blue{background:#EDF4FB;border:1.5px solid #90C0E8;border-right:4px solid var(--blue);border-radius:10px;padding:18px 22px;margin-bottom:22px;font-size:0.9rem;color:var(--text);line-height:1.8;}
+.highlight-blue strong{color:var(--blue);}
+
+/* PROCESS STEPS */
+.process-steps{display:flex;flex-direction:column;}
+.process-step{display:flex;gap:18px;align-items:flex-start;padding:18px 0;border-bottom:1px solid #D0E8DA;}
+.process-step:last-child{border-bottom:none;}
+.step-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--dark-teal));display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;color:#fff;flex-shrink:0;box-shadow:0 2px 8px rgba(0,80,60,0.2);}
+.step-content h4{font-size:0.9rem;font-weight:700;color:#0D1E2E;margin-bottom:4px;}
+.step-content p{font-size:0.82rem;color:var(--muted);line-height:1.65;}
+
+/* LINK CARDS */
+.link-card{background:#FFFFFF;border:1.5px solid var(--border);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:16px;margin-bottom:14px;text-decoration:none;transition:all 0.22s;cursor:pointer;box-shadow:0 1px 6px rgba(0,80,60,0.05);}
+.link-card:hover{border-color:var(--cyan);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,120,80,0.1);}
+.link-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0;}
+.li-blue{background:linear-gradient(135deg,#003F80,#001F50);}
+.li-teal{background:linear-gradient(135deg,var(--teal),var(--dark-teal));}
+.li-green{background:linear-gradient(135deg,#005030,#002A18);}
+.li-orange{background:linear-gradient(135deg,#7A3800,#4A2000);}
+.li-purple{background:linear-gradient(135deg,#3A1A80,#200850);}
+.li-red{background:linear-gradient(135deg,#700000,#400000);}
+.li-dark{background:linear-gradient(135deg,#1A2A20,#0D1A12);}
+.link-card-body{flex:1;}
+.link-card-title{font-size:0.93rem;font-weight:700;color:#0D1E2E;margin-bottom:3px;}
+.link-card-desc{font-size:0.78rem;color:var(--muted);}
+.link-card-arrow{color:var(--teal);font-size:1.1rem;opacity:0.8;}
+
+/* UNDERSTAND BOX */
+.understand-box{background:#EDF7F2;border:1.5px solid #90D4B0;border-radius:14px;padding:18px 22px;margin-top:18px;}
+.understand-box h4{font-size:0.83rem;font-weight:700;color:var(--teal);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.understand-items{display:flex;flex-wrap:wrap;gap:9px;}
+.understand-tag{background:#FFFFFF;border:1.5px solid #90D4B0;border-radius:20px;padding:6px 14px;font-size:0.77rem;color:var(--muted);cursor:pointer;transition:all 0.2s;user-select:none;}
+.understand-tag:hover{background:#C8F0E0;color:var(--teal);border-color:var(--cyan);}
+.understand-tag.confirmed{background:var(--teal);border-color:var(--teal);color:#FFFFFF;font-weight:600;}
+.understand-tag.confirmed::before{content:'✓ ';}
+
+/* PROGRESS */
+.onboarding-progress{background:#FFFFFF;border:1.5px solid var(--border);border-radius:16px;padding:24px 28px;margin-bottom:28px;box-shadow:0 2px 10px rgba(0,80,60,0.06);}
+.progress-title{font-size:0.85rem;font-weight:700;color:var(--muted);margin-bottom:10px;display:flex;justify-content:space-between;}
+.progress-title span{color:var(--teal);font-size:0.95rem;font-weight:800;}
+.progress-track{height:8px;background:#D0E8DA;border-radius:4px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--dark-teal));border-radius:4px;transition:width 0.4s ease;width:0%;}
+
+/* DIVIDER */
+.divider{position:relative;height:2px;background:linear-gradient(90deg,var(--cyan),#90D4B0,transparent);margin:60px 0;}
+.divider::after{content:'';position:absolute;top:-3px;right:0;width:8px;height:8px;background:var(--cyan);border-radius:50%;}
+
+/* BIRD DECORATION */
+.section-bird{display:inline-block;margin-right:8px;opacity:0.6;animation:bobble 3s ease-in-out infinite;}
+@keyframes bobble{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+
+/* FOOTER */
+footer{background:#0D2318;border-top:3px solid var(--cyan);padding:32px 56px;display:flex;align-items:center;justify-content:space-between;}
+footer p{font-size:0.8rem;color:#A8D4C0;}
+footer p.updated{font-size:0.72rem;color:#607A70;margin-top:6px;}
+footer img{height:28px;}
+
+/* CYCLE BADGE */
+.cycle-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;margin-right:8px;}
+.cycle-winter{background:rgba(0,119,170,0.12);color:#005A8A;border:1px solid rgba(0,119,170,0.25);}
+.cycle-spring{background:rgba(0,168,120,0.12);color:#006B42;border:1px solid rgba(0,168,120,0.25);}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:700px){
+  .header-top{padding:16px 18px 0;flex-wrap:wrap;gap:10px;}
+  .header-content{padding:18px 18px 32px;}
+  h1{font-size:1.85rem;}
+  main{padding:32px 16px 80px;}
+  .toc-bar{padding:0 12px;}
+  .toc-item{padding:12px 12px;font-size:0.74rem;}
+  .section-header{gap:12px;margin-bottom:22px;}
+  .section-icon{width:38px;height:38px;font-size:1.1rem;}
+  h2{font-size:1.2rem;}
+  .card-grid{grid-template-columns:1fr;}
+  .stakeholder-grid{grid-template-columns:1fr;}
+  .timeline{grid-template-columns:1fr 1fr;}
+  .info-block{padding:22px 18px;}
+  .fancy-table{font-size:0.78rem;}
+  .fancy-table th,.fancy-table td{padding:10px 12px;}
+  .link-card{padding:14px 16px;gap:12px;}
+  .link-icon{width:38px;height:38px;font-size:1.1rem;}
+  .link-card-title{font-size:0.86rem;}
+  footer{flex-direction:column;gap:12px;padding:22px 18px;}
+  footer img{height:24px;}
+  .two-col{grid-template-columns:1fr;}
+}
+@media(max-width:420px){
+  .timeline{grid-template-columns:1fr;}
+  h1{font-size:1.6rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="pgbar"></div>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="hero-bg"></div>
+
+  <div class="birds-container">
+    <div class="bird"><svg width="36" height="28" viewBox="0 0 36 28"><path d="M0 14 Q6 0 12 6 Q18 12 24 4 Q30 0 36 8 Q28 14 18 10 Q12 6 6 14Z"/></svg></div>
+    <div class="bird"><svg width="28" height="22" viewBox="0 0 36 28"><path d="M0 14 Q6 0 12 6 Q18 12 24 4 Q30 0 36 8 Q28 14 18 10 Q12 6 6 14Z"/></svg></div>
+    <div class="bird"><svg width="44" height="34" viewBox="0 0 36 28"><path d="M0 14 Q6 0 12 6 Q18 12 24 4 Q30 0 36 8 Q28 14 18 10 Q12 6 6 14Z"/></svg></div>
+  </div>
+
+  <div class="header-top">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Atidim_logo.svg/320px-Atidim_logo.svg.png" alt="עתידים" class="logo-img" onerror="this.style.display='none'">
+    <div class="header-badge">תיק חפיפה 2026</div>
+  </div>
+
+  <div class="header-content">
+    <div class="header-tag">תכנית עתידאים · עמותת עתידים</div>
+    <h1>ברוכה הבאה<br>לתכנית <span>עתידאים</span> 🎓</h1>
+    <p class="header-sub">מדריך חפיפה מלא לרכז/ת תכנית עתידאים – לימודי הנדסאי עם השמה מובטחת. כאן תמצאי הכל: תפקיד, ממשקים, תהליכים, לוחות זמנים וכלים.</p>
+    <div class="welcome-note">
+      <div class="welcome-note-icon">🤝</div>
+      <div>ברוכה הבאה יובל! תכנית עתידאים מאמינה שכל צעיר מהפריפריה ראוי לקריירה טכנולוגית מצוינת. התפקיד שלך הוא להיות הגשר שמחבר בין הסטודנטים, המכללות והמעסיקים. אנחנו כאן בשבילך 💙</div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ NAV ══ -->
+<nav class="toc-bar">
+  <a class="toc-item" href="#checklist">צ'ק ליסט תחילת תפקיד</a>
+  <a class="toc-item" href="#about">על התכנית</a>
+  <a class="toc-item" href="#role">תפקיד הרכז/ת</a>
+  <a class="toc-item" href="#interfaces">ממשקים</a>
+  <a class="toc-item" href="#calendar">לוח שנה</a>
+  <a class="toc-item" href="#screening">תהליך מיון</a>
+  <a class="toc-item" href="#opening">פתיחת כיתה</a>
+  <a class="toc-item" href="#students">ליווי סטודנטים</a>
+  <a class="toc-item" href="#volunteering">התנדבות</a>
+  <a class="toc-item" href="#budget">ניהול תקציב</a>
+  <a class="toc-item" href="#research">מחקר מלווה</a>
+  <a class="toc-item" href="#tools">כלים ומערכות</a>
+</nav>
+
+<main>
+
+<!-- ══ CHECKLIST PROGRESS ══ -->
+<div class="onboarding-progress">
+  <div class="progress-title">התקדמות החפיפה <span id="prog-text">0 / 0</span></div>
+  <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+</div>
+
+<!-- ══ FIRST DAYS CHECKLIST ══ -->
+<section class="section" id="checklist">
+  <div class="section-header">
+    <div class="section-icon">✅</div>
+    <h2>צ'ק ליסט תחילת תפקיד</h2>
+  </div>
+
+  <div class="highlight">
+    השבועות הראשונים בתפקיד הם קריטיים. הצ'ק ליסט הזה מסייע לך לא לפספס דבר – סמני כל פריט כשסיימת 👇
+  </div>
+
+  <div class="info-block">
+    <h3>שבוע ראשון – קליטה ארגונית</h3>
+    <ul class="checklist">
+      <li><div class="checklist-box"></div><span>קליטה במערכות הארגון (מחשב, מייל, חשבון Microsoft)</span></li>
+      <li><div class="checklist-box"></div><span>פגישת פתיחה עם מנהלת התכנית – היכרות והתאמת ציפיות</span></li>
+      <li><div class="checklist-box"></div><span>היכרות עם יתר חברי הצוות וישיבת צוות ראשונה</span></li>
+      <li><div class="checklist-box"></div><span>קבלת גישה ל-CRM של העמותה ואימות שהגישה תקינה</span></li>
+      <li><div class="checklist-box"></div><span>קבלת גישה ל-SharePoint וקבצי העבודה המשותפים</span></li>
+      <li><div class="checklist-box"></div><span>קבלת גישה ל-PowerBI (דשבורד מיון)</span></li>
+      <li><div class="checklist-box"></div><span>היכרות עם קובץ ניהול החשבוניות</span></li>
+      <li><div class="checklist-box"></div><span>קריאת חוזה העסקה והבנת תנאי העסקה</span></li>
+    </ul>
+  </div>
+
+  <div class="info-block">
+    <h3>שבועות 1–2 – היכרות עם הכיתות הקיימות</h3>
+    <ul class="checklist">
+      <li><div class="checklist-box"></div><span>קבלת רשימת הכיתות הפעילות מהמנהלת + סטטוס כל כיתה</span></li>
+      <li><div class="checklist-box"></div><span>קריאת ה-CRM והיכרות עם הסטודנטים הקיימים</span></li>
+      <li><div class="checklist-box"></div><span>ביקור פיזי ראשון בכל כיתה פעילה – כניסה לכיתה והיכרות</span></li>
+      <li><div class="checklist-box"></div><span>היכרות עם ראשי המגמה בכל מכללה רלוונטית</span></li>
+      <li><div class="checklist-box"></div><span>היכרות עם נציגי המעסיקים של הכיתות הקיימות</span></li>
+      <li><div class="checklist-box"></div><span>צפייה בדשבורד ימי הולדת – לבדוק מי קרוב לשלוח ברכה</span></li>
+      <li><div class="checklist-box"></div><span>הצטרפות לכל קבוצות הווטסאפ הרלוונטיות (כיתות + צוות)</span></li>
+    </ul>
+  </div>
+
+  <div class="info-block">
+    <h3>שבועות 2–4 – היכרות עם שותפים ותהליכים</h3>
+    <ul class="checklist">
+      <li><div class="checklist-box"></div><span>פגישה עם רכזת המועמדים – הבנת תהליך המיון הנוכחי</span></li>
+      <li><div class="checklist-box"></div><span>פגישה עם יחידת הכספים – הכרת לוחות התשלומים וקובץ החשבוניות</span></li>
+      <li><div class="checklist-box"></div><span>פגישה עם מנהלת השיווק – הבנת תהליכי השיווק והקמפיינים</span></li>
+      <li><div class="checklist-box"></div><span>פגישה עם יחידת קשרי מעסיקים</span></li>
+      <li><div class="checklist-box"></div><span>קריאת גאנט ההעשרה ופיתוח אישי</span></li>
+      <li><div class="checklist-box"></div><span>הכרת הסקרים (פתיחה / אמצע / סיום) ומועדי ההעברה שלהם</span></li>
+      <li><div class="checklist-box"></div><span>הכרת דשבורד מחקר מלווה ב-Looker Studio</span></li>
+      <li><div class="checklist-box"></div><span>קריאת ההסכמים עם המכללות והמעסיקים הקיימים</span></li>
+    </ul>
+  </div>
+
+  <div class="info-block">
+    <h3>חודש ראשון – תפקוד עצמאי</h3>
+    <ul class="checklist">
+      <li><div class="checklist-box"></div><span>ביצוע ביקור שבועי שוטף בכל הכיתות ותיעוד ב-CRM</span></li>
+      <li><div class="checklist-box"></div><span>בדיקת סטטוס התנדבויות הסטודנטים בכיתות הפעילות</span></li>
+      <li><div class="checklist-box"></div><span>בדיקת סטטוס תשלומים בכיתות הפעילות</span></li>
+      <li><div class="checklist-box"></div><span>ישיבת עדכון עם מנהלת התכנית + הגדרת יעדים לשלושת החודשים הראשונים</span></li>
+      <li><div class="checklist-box"></div><span>היכרות עם שותפי שטח (מרכזי צעירים, גורמי שטח רלוונטיים)</span></li>
+      <li><div class="checklist-box"></div><span>קריאת החומר על התכנית (אתר atidaim.co.il, סרטוני סטודנטים)</span></li>
+      <li><div class="checklist-box"></div><span>הבנה מלאה של קריטריוני הלימוד (בגרויות, גבולות גיל)</span></li>
+      <li><div class="checklist-box"></div><span>הצטרפות לפגישה עם מעסיק או מכללה – לפחות אחת</span></li>
+    </ul>
+  </div>
+
+  <div class="understand-box">
+    <h4>✅ מוכנה לתפקיד! – וידוא סיום הצ'ק ליסט</h4>
+    <div class="understand-items">
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">סיימתי שבוע ראשון</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">הכרתי את כל הכיתות</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">פגשתי את כל השותפים</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">מוכנה לעבוד עצמאית 🚀</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ABOUT ══ -->
+<section class="section" id="about">
+  <div class="section-header">
+    <div class="section-icon">🏫</div>
+    <h2>על תכנית עתידאים</h2>
+  </div>
+
+  <div class="highlight">
+    ארגון עתידים פועל לבניית חברה ישראלית חזקה, דרך מיצוי פוטנציאל ההון האנושי בפריפריה הגיאוגרפית והחברתית – <strong>רכישת השכלה אקדמית ומקצועית, פיתוח אישי ותעסוקה איכותית בתעשייה ובהיי-טק.</strong>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">מטרת התכנית</div>
+      <div class="card-body">לימודים במסלול מהיר לתואר הנדסאי עם השמה מובטחת וידועה מראש, יחד עם מעטפת תמיכה כלכלית, פדגוגית ואישית.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <div class="card-title">מי הסטודנטים?</div>
+      <div class="card-body">למעלה מ-1,000 צעירות וצעירים מצטיינים (גיל 20+) מיישובי הפריפריה ובני אוכלוסיות ייחודיות. השתתפו עד כה.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏭</div>
+      <div class="card-title">השמה מובטחת</div>
+      <div class="card-body">כל כיתה נפתחת עם מעסיק ספציפי. הסטודנט יודע מראש היכן הוא יועסק בסיום לימודיו.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📚</div>
+      <div class="card-title">קריטריוני קבלה</div>
+      <div class="card-body">3 בגרויות בציון עובר: מתמטיקה 3 יח', אנגלית 3 יח', לשון/הבעה 2 יח'. חריגים לפי גיל (מעל 35 – 12 שנות לימוד בלבד).</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🗓️</div>
+      <div class="card-title">שני מחזורים בשנה</div>
+      <div class="card-body">מחזור חורף (פתיחה אוקטובר-נובמבר) ומחזור אביב (פתיחה פברואר-מרץ), כנגזרת מלוח המכללות הטכנולוגיות.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌐</div>
+      <div class="card-title">אתר התכנית</div>
+      <div class="card-body"><a href="https://atidaim.co.il/" target="_blank" style="color:var(--teal);font-weight:600;">atidaim.co.il</a> – כל המידע על התכנית, להפנות שם מועמדים ושותפים.</div>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <h3>קריטריוני לימוד הנדסאי בפירוט</h3>
+    <div class="table-wrap" style="margin-bottom:0;">
+      <table class="fancy-table">
+        <thead>
+          <tr>
+            <th>גיל</th>
+            <th>דרישות</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-weight:700;color:var(--teal);">מתחת לגיל 30</td><td>מתמטיקה 3 יח', אנגלית 3 יח', לשון/הבעה 2 יח'</td></tr>
+          <tr><td style="font-weight:700;color:var(--teal);">גיל 30–35</td><td>בגרות במתמטיקה 3 יח' (הדרישות האחרות מקלות)</td></tr>
+          <tr><td style="font-weight:700;color:var(--teal);">מעל גיל 35</td><td>12 שנות לימוד בלבד</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="highlight-blue">
+    💡 <strong>הסרטונים לשיתוף:</strong> <a href="https://foratidim.sharepoint.com/:v:/s/AtidimFoundation/IQCjlS6vVOpcSJgHB2Ul-REtAS2WjGkNdUssVK_zAtg-qrs?e=41m1Va" target="_blank" style="color:var(--blue);">סיכום פעילות עתידאים 2025</a> &nbsp;|&nbsp; <a href="https://foratidim.sharepoint.com/:v:/s/AtidimFoundation/IQDRbCXUisfaTKapvCwelgbxARQ9t-kZ8tTgR-TRh__20nU?e=i2ITOX" target="_blank" style="color:var(--blue);">סטודנטים מדברים על התכנית 2024</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ROLE ══ -->
+<section class="section" id="role">
+  <div class="section-header">
+    <div class="section-icon">👤</div>
+    <h2>תיאור התפקיד</h2>
+  </div>
+
+  <div class="info-block">
+    <h3>6 תחומי אחריות מרכזיים</h3>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>ריכוז כיתות הנדסאים</h4>
+          <p>ליווי והובלת הסטודנטים בשלב הלימודים – ברמה האישית ובריה הכיתתית: מענה אישי, טיפול במקרים חריגים, נוכחות, מעקב השמה.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>תפעול כולל ושוטף</h4>
+          <p>ועדות פדגוגיות, תקציב, חוזים, מו"פ ועוד – בשיתוף יחידת הכספים והתפעול.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>הובלת פתיחת כיתות חדשות</h4>
+          <p>שיווק, איתור ומיון מועמדים – בשיתוף רכזת מיון המועמדים ומנהלת השיווק.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>תכנים חוץ-אקדמיים וקשר עם מכללות ומעסיקים</h4>
+          <p>אחריות על תכנית העשרה ופיתוח אישי. שמירת קשר רציף עם המכללות הטכנולוגיות השותפות ועם המעסיקים.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>יצירת שותפויות</h4>
+          <p>שותפויות עם ארגוני שטח, ארגוני צעירים, מעסיקים ופורומים מקצועיים.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>הצפת תובנות ויוזמות</h4>
+          <p>לקידום התכנית מהשטח – תובנות, פידבק ורעיונות חדשניים.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="understand-box">
+    <h4>✅ וידוא הבנה – התפקיד</h4>
+    <div class="understand-items">
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">הבנתי את 6 תחומי האחריות</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">ברור לי הממשק עם המעסיקים</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">ברור לי הממשק עם המכללות</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">ידועים לי שני מחזורי השנה</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ INTERFACES ══ -->
+<section class="section" id="interfaces">
+  <div class="section-header">
+    <div class="section-icon">🔗</div>
+    <h2>ממשקים – עם מי עובדים?</h2>
+  </div>
+
+  <div class="stakeholder-grid">
+    <div class="stakeholder-card">
+      <div class="stakeholder-avatar">🏆</div>
+      <div>
+        <div class="stakeholder-name">מנהל/ת תכנית עתידאים</div>
+        <div class="stakeholder-role">כפיפות ישירה ומקצועית</div>
+        <div class="stakeholder-desc">תהליך משוב שנתי, פיתוח מקצועי, שכר ותגמולים. תכנון והוצאה לפועל של משימות התפקיד.</div>
+      </div>
+    </div>
+    <div class="stakeholder-card">
+      <div class="stakeholder-avatar">👥</div>
+      <div>
+        <div class="stakeholder-name">רכזי/ות סטודנטים מקבילים</div>
+        <div class="stakeholder-role">שיתוף ידע ותמיכה הדדית</div>
+        <div class="stakeholder-desc">שיתוף פרקטיקות מוצלחות, תיאום פעילויות משותפות, התייעצות באתגרים, רשת תמיכה מקצועית והתייעלות תקציבית.</div>
+      </div>
+    </div>
+    <div class="stakeholder-card">
+      <div class="stakeholder-avatar">💰</div>
+      <div>
+        <div class="stakeholder-name">יחידת הכספים והתפעול</div>
+        <div class="stakeholder-role">מלגות, תשלומים, תקציבים</div>
+        <div class="stakeholder-desc">טיפול במלגות ותשלומים לסטודנטים, תיאום תקציבים לפעילויות ואירועים, ממשקי תשלומים לכיתות, דיווח הוצאות.</div>
+      </div>
+    </div>
+    <div class="stakeholder-card">
+      <div class="stakeholder-avatar">🔍</div>
+      <div>
+        <div class="stakeholder-name">רכזת מועמדים</div>
+        <div class="stakeholder-role">מיון וראיונות</div>
+        <div class="stakeholder-desc">שיתוף פעולה בתהליכי מיון וראיונות, העברת מידע על דרישות התכנית, מענה לשאלות שוטפות.</div>
+      </div>
+    </div>
+    <div class="stakeholder-card">
+      <div class="stakeholder-avatar">💼</div>
+      <div>
+        <div class="stakeholder-name">יחידת קשרי מעסיקים</div>
+        <div class="stakeholder-role">חשיפת התכנית ופתיחת כיתות</div>
+        <div class="stakeholder-desc">עבודה משותפת בחשיפת התכנית למעסיקים, חיבור לפתיחת כיתות חדשות, כלים לסטודנטים לקראת קליטה נכונה.</div>
+      </div>
+    </div>
+    <div class="stakeholder-card">
+      <div class="stakeholder-avatar">📣</div>
+      <div>
+        <div class="stakeholder-name">מנהלת שיווק</div>
+        <div class="stakeholder-role">קמפיינים ורשתות חברתיות</div>
+        <div class="stakeholder-desc">הוצאת קמפיינים לכיתות חדשות, חומרים לרשתות חברתיות, ניהול מערך שיווק מול ארגוני שטח ואירועים ייחודיים.</div>
+      </div>
+    </div>
+    <div class="stakeholder-card">
+      <div class="stakeholder-avatar">🏫</div>
+      <div>
+        <div class="stakeholder-name">נציגי המכללות הטכנולוגיות</div>
+        <div class="stakeholder-role">שותפות אקדמית</div>
+        <div class="stakeholder-desc">תכנית שיווק, בדיקת זכאות מועמדים, כנסי חשיפה, גיבוש תכנית התנדבות וקליטה ללימודים. תיאום פעילויות ופדגוגיה שוטפת.</div>
+      </div>
+    </div>
+    <div class="stakeholder-card">
+      <div class="stakeholder-avatar">🏭</div>
+      <div>
+        <div class="stakeholder-name">המעסיק</div>
+        <div class="stakeholder-role">שיח שוטף ובקרה</div>
+        <div class="stakeholder-desc">בניית כיתה חדשה, ניהול מיון, בקרה ופיקוח, ועדות פדגוגיות סמסטריאליות, מפגשים וטקסים, קליטה בסיום לימודים.</div>
+      </div>
+    </div>
+    <div class="stakeholder-card">
+      <div class="stakeholder-avatar">🌍</div>
+      <div>
+        <div class="stakeholder-name">שותפי שטח ומגזר שלישי</div>
+        <div class="stakeholder-role">שיווק ותמיכה פרטנית</div>
+        <div class="stakeholder-desc">ארגוני שטח ועמותות לפי אוכלוסיות יעד, צה"ל, אגף הקרן לחיילים משוחררים, מרכזי צעירים, נט"ל ועוד.</div>
+      </div>
+    </div>
+    <div class="stakeholder-card">
+      <div class="stakeholder-avatar">🔄</div>
+      <div>
+        <div class="stakeholder-name">רכזי עתידים מתכניות מקבילות</div>
+        <div class="stakeholder-role">שיתוף פעולה חוצה-תכניות</div>
+        <div class="stakeholder-desc">פעילויות חוצות תכניות, איגום משאבים, תיאום פעילויות משותפות ויצירת רצף ליוויי לסטודנטים העוברים בין תכניות.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="understand-box">
+    <h4>✅ וידוא הבנה – ממשקים</h4>
+    <div class="understand-items">
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">הבנתי את תפקיד המכללה בתכנית</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">הבנתי את תפקיד המעסיק</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">ידוע לי מיהי רכזת המועמדים</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">מכירה את יחידת הכספים</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ CALENDAR ══ -->
+<section class="section" id="calendar">
+  <div class="section-header">
+    <div class="section-icon">📅</div>
+    <h2>לוח שנה שנתי</h2>
+  </div>
+
+  <div class="highlight">
+    <strong>שני מחזורים בשנה:</strong> <span class="cycle-winter">מחזור חורף</span> ו-<span class="cycle-spring">מחזור אביב</span> – כנגזרת מלוח המכללות הטכנולוגיות.
+  </div>
+
+  <div class="two-col" style="margin-bottom:22px;">
+    <div class="info-block" style="margin-bottom:0;">
+      <h3><span class="cycle-winter">מחזור חורף</span> – ציר הפעולה</h3>
+      <ul class="fancy-list">
+        <li><strong>אפריל – מאי:</strong> גיבוש והתנעת קמפיין שיווק</li>
+        <li><strong>מאי – ספטמבר:</strong> ביצוע תהליכי מיון לכיתות</li>
+        <li><strong>אוקטובר – נובמבר:</strong> פתיחת מחזור חורף</li>
+      </ul>
+    </div>
+    <div class="info-block" style="margin-bottom:0;">
+      <h3><span class="cycle-spring">מחזור אביב</span> – ציר הפעולה</h3>
+      <ul class="fancy-list">
+        <li><strong>אוקטובר – נובמבר:</strong> גיבוש והתנעת קמפיין שיווק</li>
+        <li><strong>נובמבר – פברואר:</strong> ביצוע תהליכי מיון לכיתות</li>
+        <li><strong>פברואר – מרץ:</strong> פתיחת מחזור אביב</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-card">
+      <div class="timeline-month">ינואר</div>
+      <ul class="timeline-tasks">
+        <li>סדנת "מעבר בהצלחה" – לכיתות מסיימות</li>
+        <li>כלים למעבר מלימודים לתעסוקה</li>
+        <li>חשיפה ורישום לארגון הבוגרים</li>
+      </ul>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-month">פברואר – מרץ</div>
+      <ul class="timeline-tasks">
+        <li>פתיחת מחזור אביב</li>
+        <li>יום אוריינטציה לכיתות חדשות</li>
+        <li>שיחות פתיחה עם סטודנטים</li>
+      </ul>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-month">מרץ</div>
+      <ul class="timeline-tasks">
+        <li>יום אוריינטציה – לכיתות חדשות</li>
+        <li>העברת סקר פתיחה</li>
+      </ul>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-month">אפריל – מאי</div>
+      <ul class="timeline-tasks">
+        <li>גיבוש קמפיין שיווק מחזור חורף</li>
+        <li>הפצה למרכזי צעירים ושותפי שטח</li>
+      </ul>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-month">מאי – ספטמבר</div>
+      <ul class="timeline-tasks">
+        <li>תהליכי מיון לכיתות מחזור חורף</li>
+        <li>כנסי חשיפה</li>
+        <li>ראיונות מועמדים</li>
+      </ul>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-month">יוני</div>
+      <ul class="timeline-tasks">
+        <li>הגשת פרטי סטודנטים למפעל הפיס (60+ שעות התנדבות)</li>
+        <li>התחייבות עקרונית לביצוע 80 שעות עד אוגוסט</li>
+      </ul>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-month">אוגוסט</div>
+      <ul class="timeline-tasks">
+        <li>קבלת כסף מפעל הפיס אצל הסטודנטים</li>
+        <li>הכנות לפתיחת שנה</li>
+      </ul>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-month">אוקטובר – נובמבר</div>
+      <ul class="timeline-tasks">
+        <li>פתיחת מחזור חורף</li>
+        <li>גיבוש קמפיין שיווק מחזור אביב</li>
+        <li>ועדות פדגוגיות סמסטריאליות</li>
+      </ul>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-month">כל השנה</div>
+      <ul class="timeline-tasks">
+        <li>ביקורים שבועיים בכיתות</li>
+        <li>תיעוד שיחות אישיות ב-CRM</li>
+        <li>מעקב נוכחות ותשלומים</li>
+        <li>ברכות אישיות בימי הולדת</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ SCREENING ══ -->
+<section class="section" id="screening">
+  <div class="section-header">
+    <div class="section-icon">🔎</div>
+    <h2>תהליך המיון</h2>
+  </div>
+
+  <div class="highlight-orange">
+    ⚠️ <strong>שים לב:</strong> תהליך המיון משתנה בין כיתה לכיתה – תלוי מעסיק ודרישותיו והתאמה לאוכלוסייה. להלן התהליך העקרוני הכללי.
+  </div>
+
+  <div class="info-block">
+    <h3>שלבי המיון – מלידים עד כיתה</h3>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>קבלת לידים</h4>
+          <p>הלידים מגיעים באקסל משותף לרכזת מועמדים לפי פרמטרים שהוגדרו. לאחר סינון, הלידים הרלוונטיים מועברים לאקסל "נקי".</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>כנס חשיפה</h4>
+          <p>רכזת המועמדים מזמנת את הלידים. הרכז/ת מוביל/ה את כנס החשיפה בשת"פ עם המכללה והמעסיק. בסיום – רשימת מעוניינים.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>מבחן פסיכוטכני</h4>
+          <p>שליחת מבחן דרך מערכת הוריטס של מכון אדם מילוא. ציון 70 ומעלה לזימון לראיון (ניתן לשנות בהסכמה עם המעסיק). יוצאי אתיופיה: +25% זמן. עולים חדשים / ערבים: +20% זמן.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>ראיון אישי מקצועי</h4>
+          <p>נוכחים: רכז/ת עתידאים + נציג משאבי אנוש + מנהל מקצועי מהמעסיק. סיכום ראיון באקסל עם ציון מסכם (1-10). אין עוברים למועמד הבא עד הסכמה על ציון.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>בדיקת תעודות ומול המכללה</h4>
+          <p>לפני כנס החשיפה – שליחת תעודות בגרות למכללה. רק אחרי אישור המכללה אפשר להמשיך בתהליך. אם מועמד לא עובר או יש בעיית סיווג ביטחוני – ניתן לשים בכיתה עם מעסיק אחר.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>סגירת רשימה סופית</h4>
+          <p>לאחר סיכום עם המעסיק – העברת פרטים למכללה (מדור רישום). הם ידאגו לרישום. לאחר הרישום – פתיחת קבוצת ווטסאפ לתחזוקת קשר עוד לפני פתיחת הכיתה.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    📊 <strong>דשבורד מיון:</strong> כל תהליכי המיון מוזמנים על קובץ האקסל המשותף וממנו הכל מחובר לדשבורד PowerBI.
+  </div>
+
+  <a href="https://app.powerbi.com/groups/7dbb3fd4-752f-4f9a-b924-2f9881ccbd55/reports/c59a617c-a367-49ce-b29a-bd7a14285811/dbc7b708a50470d7b57a?experience=power-bi" target="_blank" class="link-card">
+    <div class="link-icon li-blue">📊</div>
+    <div class="link-card-body">
+      <div class="link-card-title">דשבורד מיון – PowerBI</div>
+      <div class="link-card-desc">מעקב אחר כל תהליכי המיון וסטטוס המועמדים</div>
+    </div>
+    <div class="link-card-arrow">→</div>
+  </a>
+
+  <div class="understand-box">
+    <h4>✅ וידוא הבנה – מיון</h4>
+    <div class="understand-items">
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">הבנתי את שלבי המיון</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">יודע/ת מה זה כנס חשיפה</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">הבנתי מה זה מבחן הוריטס</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">יודע/ת מה לעשות עם בגרויות מול המכללה</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ OPENING ══ -->
+<section class="section" id="opening">
+  <div class="section-header">
+    <div class="section-icon">🚀</div>
+    <h2>פתיחת כיתה</h2>
+  </div>
+
+  <div class="info-block">
+    <h3>מהלכים מרכזיים בפתיחת כיתה</h3>
+    <ul class="checklist" id="opening-checklist">
+      <li><div class="checklist-box"></div><span>קביעת מועד לשיחת פתיחה של הרכז/ת – הצגה והיכרות כיתתית</span></li>
+      <li><div class="checklist-box"></div><span>העברת סקר פתיחה כחלק ממחקר מלווה של התכנית</span></li>
+      <li><div class="checklist-box"></div><span>רישום הסטודנטים למערכת ה-CRM של העמותה</span></li>
+      <li><div class="checklist-box"></div><span>החתמות על החוזים – סטודנט חותם מול עתידים ומול המעסיק (פיזית, במשותף עם המעסיק)</span></li>
+      <li><div class="checklist-box"></div><span>פתיחת קבוצת ווטסאפ לכיתה</span></li>
+      <li><div class="checklist-box"></div><span>הכרת לוח התשלומים הייעודי לכיתה</span></li>
+      <li><div class="checklist-box"></div><span>סיור אצל המעסיק (בתחילת הלימודים)</span></li>
+      <li><div class="checklist-box"></div><span>הרמת כוסית עם מכללה ומעסיק</span></li>
+    </ul>
+  </div>
+
+  <div class="highlight-green">
+    📝 <strong>סקר פתיחה:</strong> <a href="https://www.surveymonkey.com/r/S7N38S8" target="_blank" style="color:var(--green);">surveymonkey.com/r/S7N38S8</a> – מועבר בשיחת הפתיחה.
+  </div>
+
+  <div class="info-block">
+    <h3>פעילויות ליווי כיתה</h3>
+    <div class="card-grid" style="margin-top:14px;margin-bottom:0;">
+      <div class="card">
+        <div class="card-icon">🥂</div>
+        <div class="card-title">הרמת כוסית</div>
+        <div class="card-body">עם המכללה והמעסיק – בתחילת התכנית. הזדמנות לחזק קשרים ולהציג את הרכז/ת.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">סיור אצל המעסיק</div>
+        <div class="card-body">סיור מוקדם שמחבר סטודנטים למקום העבודה העתידי. חיזוק ההנעה.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎤</div>
+        <div class="card-title">הרצאות אורח</div>
+        <div class="card-body">הזמנת מנהלים ובוגרים לשיחה עם הסטודנטים – מבנה מקצועי ואישי.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌱</div>
+        <div class="card-title">תכנית העשרה ופיתוח אישי</div>
+        <div class="card-body">תוכן חוץ-אקדמי מובנה לאורך התכנית. ראה גאנט העשרה.</div>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://foratidim-my.sharepoint.com/:x:/g/personal/taasiya_atidim_org_il/IQCPUMOfsZWHSLzQQdzLRbL8AcUfPMOso4qzPHuni2pGNHo?e=462aoe" target="_blank" class="link-card">
+    <div class="link-icon li-teal">📋</div>
+    <div class="link-card-body">
+      <div class="link-card-title">גאנט העשרה ופיתוח אישי ומקצועי</div>
+      <div class="link-card-desc">תכנית העשרה מלאה לאורך השנה – SharePoint</div>
+    </div>
+    <div class="link-card-arrow">→</div>
+  </a>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ STUDENTS ══ -->
+<section class="section" id="students">
+  <div class="section-header">
+    <div class="section-icon">🤝</div>
+    <h2>ליווי הסטודנטים</h2>
+  </div>
+
+  <div class="info-block">
+    <h3>ליווי אישי – שגרת שטח</h3>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>ביקורים פיזיים שבועיים</h4>
+          <p>הגעה פיזית לכל כיתה לפחות אחת לשבוע וחצי. במהלך הביקור: כניסה לכמה דקות לכיתה, זמן בלתי-רשמי בהפסקה, שיחות אישיות לפי צורך ובחירת סטודנטים עפ"י המלצת ראש המגמה.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>תיעוד ב-CRM</h4>
+          <p>כל שיחה אישית מתועדת במערכת ה-CRM בהערות רכז/ת. חובה. תיעוד עקבי מאפשר מעקב אחר כל סטודנט לאורך זמן.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>ועדה פדגוגית סמסטריאלית</h4>
+          <p>עם ראש המגמה במכללה ונציג המעסיק – אחת לסמסטר. מעבר על כלל הסטודנטים: נוכחות, ציונים, חריגים. לאחר הוועדה – שיחה עם חריגים ופרגון למצטיינים.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>מעקב נוכחות</h4>
+          <p>מעקב שוטף מול המכללה על נוכחות הסטודנטים.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>מענה למקרים חריגים</h4>
+          <p>גיבוש מענה מותאם / חיבור לגופי שטח אחרים לקבלת מענה עבור הסטודנט.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>קורסי GOOL</h4>
+          <p>לאחר התייעצות פדגוגית עם ראש המגמה: סטודנט מבקש קוד ← רכז/ת מבקש/ת קוד מהילה/עופר ומעביר/ה לסטודנט. מעדכן/ת ב-CRM בהערות רכז.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">⚖️</div>
+      <div class="card-title">התערבות מול הדיקנאט</div>
+      <div class="card-body">במקרים שדורשים התערבות פורמלית עם הנהלת המכללה – בתיאום עם מנהל/ת התכנית.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🪖</div>
+      <div class="card-title">ליווי מגויסים למילואים</div>
+      <div class="card-body">ליווי וחיזוק אישי ומול המכללה לסטודנטים המגויסים למילואים.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎂</div>
+      <div class="card-title">ברכה אישית ביום הולדת</div>
+      <div class="card-body">ברכה אישית לכל סטודנט – מחזקת קשר ומראה שרואים אותו/ה.</div>
+    </div>
+  </div>
+
+  <div class="understand-box">
+    <h4>✅ וידוא הבנה – ליווי</h4>
+    <div class="understand-items">
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">ידוע לי כמה פעמים לבקר בכיתה</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">מכיר/ה את מערכת ה-CRM</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">הבנתי מה זו ועדה פדגוגית</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">יודע/ת מה GOOL ואיך לבקש קוד</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ VOLUNTEERING ══ -->
+<section class="section" id="volunteering">
+  <div class="section-header">
+    <div class="section-icon">🤲</div>
+    <h2>התנדבות ותרומה לקהילה</h2>
+  </div>
+
+  <div class="highlight-green">
+    💚 <strong>ערך מרכזי בעמותה!</strong> כל נושא ההתנדבות הוא ערך מוביל. נדרש לעשות יום התנדבות כיתתי מרוכז – לפחות אחד בשת"פ עם המעסיק מומלץ.
+  </div>
+
+  <div class="info-block">
+    <h3>80 שעות התנדבות – מלגת מפעל הפיס</h3>
+    <div class="highlight-orange" style="margin-bottom:18px;">
+      ⚠️ <strong>חשוב מאוד:</strong> מלגת מפעל הפיס (10,000 ₪) <strong>אינה שייכת לסטודנט</strong> – היא מממנת חלק מרכיבי התכנית (חלק מדמי הקיום, 10% משכר הלימוד וכד'). יש להסביר זאת כבר בכנסי החשיפה ובשיחת הפתיחה!
+    </div>
+    <ul class="fancy-list">
+      <li>במרבית הכיתות על הסטודנטים לבצע <strong>80 שעות התנדבות</strong> בשנת הלימודים הראשונה.</li>
+      <li><strong>יום מילואים</strong> נחשב כשעתיים התנדבות, בדרך כלל מאושר להחשיב רטרו כמה חודשים.</li>
+      <li>ניתן להתחיל לצבור שעות עוד <strong>לפני תחילת הלימודים</strong>, לאחר קבלה לתכנית.</li>
+      <li>במהלך <strong>חודש יוני</strong>: הגשת פרטי הסטודנטים למפעל הפיס עם הוכחה לביצוע ~60 שעות + התחייבות עקרונית ל-80 שעות עד אוגוסט.</li>
+      <li>לאחר ההגשה, מפעל הפיס מגיש רשימת קבוצת ביקורת – יש להגיש דו"ח אישי עם פירוט + חתימות.</li>
+      <li>ב<strong>אוגוסט</strong> מתקבל הכסף אצל הסטודנט.</li>
+      <li><strong>אין כפל!</strong> לא ניתן להגיש מועמדות למלגה מקבילה נוספת בשנה הראשונה.</li>
+      <li>באחריות הרכז/ת לנהל מעקב שוטף בקובץ Drive (עצמאית / בהובלת סטודנט מהכיתה).</li>
+    </ul>
+  </div>
+
+  <a href="#" target="_blank" class="link-card">
+    <div class="link-icon li-green">🤝</div>
+    <div class="link-card-body">
+      <div class="link-card-title">מאגר ההתנדבויות של עתידים</div>
+      <div class="link-card-desc">מאגר הזדמנויות ההתנדבות לסטודנטים</div>
+    </div>
+    <div class="link-card-arrow">→</div>
+  </a>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ BUDGET ══ -->
+<section class="section" id="budget">
+  <div class="section-header">
+    <div class="section-icon">💰</div>
+    <h2>ניהול תקציב</h2>
+  </div>
+
+  <div class="highlight">
+    לכל כיתה יש <strong>לוח תשלומים ייעודי</strong> שהוא חלק מההסכם המשותף עם המכללה והמעסיק. גיבוש לוח התשלומים והטיפול בהסכמים – <strong>באחריות מנהלת התכנית</strong>.
+  </div>
+
+  <div class="info-block">
+    <h3>אחריות הרכז/ת בתקציב</h3>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>מעקב אחר תשלומי מלגות</h4>
+          <p>לוודא שאין פערים ושהמכללה משלמת בזמן ועפ"י מה שצריך, כולל חריגים.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>בדיקת חשבוניות</h4>
+          <p>כל חשבונית לתשלום שמגיעה מהמכללה – לוודא שהחיוב נכון בהתאם ללוח התשלומים. להעביר לרכזת הכספים של עתידים לקריירה ובמקביל להזין בקובץ ניהול חשבוניות.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>שיוך חשבוניות לכרטסת הנכונה</h4>
+          <p>לכל כיתה 2 כרטסות: <strong>כרטסת מיון וגיוס</strong> ו-<strong>כרטסת מלגות</strong>. מה שלא קשור למיון/שיווק → למלגות. כללי/רוחבי/לכמה כיתות → כרטסת תפעול עתידאים.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://foratidim.sharepoint.com/:x:/s/AtidimFoundation/IQBaYvcJQTLxT411UKHkvNICAXhXOR9t3nm7qMiED-uUrcg?e=1UdNBW" target="_blank" class="link-card">
+    <div class="link-icon li-teal">📊</div>
+    <div class="link-card-body">
+      <div class="link-card-title">קובץ הזנת חשבוניות</div>
+      <div class="link-card-desc">SharePoint – כאן מזינים את כל החשבוניות</div>
+    </div>
+    <div class="link-card-arrow">→</div>
+  </a>
+
+  <div class="highlight-orange">
+    ⚠️ <strong>תזכורת:</strong> בדיקת כרטסת הנכונה לכל חשבונית – חשובה מאוד לדיוק הדיווח הכספי.
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ RESEARCH ══ -->
+<section class="section" id="research">
+  <div class="section-header">
+    <div class="section-icon">📊</div>
+    <h2>מחקר מלווה</h2>
+  </div>
+
+  <div class="highlight-purple">
+    🔬 <strong>לתכנית מחקר מלווה!</strong> מהמחקר לומדים המון – שביעות רצון סטודנט, איכות המכללה, השוואה בין מכללות/מגמות/מעסיקים/אוכלוסיות. חשוב לאחר כל שאלון לעצור, להוציא תובנות ולשתף את המכללה והמעסיק.
+  </div>
+
+  <div class="info-block">
+    <h3>3 סקרים לאורך התכנית</h3>
+    <div class="card-grid" style="margin-top:14px;margin-bottom:0;">
+      <div class="card">
+        <div class="card-icon">1️⃣</div>
+        <div class="card-title">סקר פתיחה</div>
+        <div class="card-body">מועבר בשיחת הפתיחה עם הסטודנטים. אנונימי. <br><a href="https://www.surveymonkey.com/r/S7N38S8" target="_blank" style="color:var(--teal);font-size:0.78rem;">surveymonkey.com/r/S7N38S8</a></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">2️⃣</div>
+        <div class="card-title">סקר אמצע</div>
+        <div class="card-body">מועבר באמצע התכנית. <br><a href="https://www.surveymonkey.com/r/S7FCZJX" target="_blank" style="color:var(--teal);font-size:0.78rem;">surveymonkey.com/r/S7FCZJX</a></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">3️⃣</div>
+        <div class="card-title">סקר סיום</div>
+        <div class="card-body">מועבר בחודש האחרון לתכנית. <br><a href="https://www.surveymonkey.com/r/NB8R9YL" target="_blank" style="color:var(--teal);font-size:0.78rem;">surveymonkey.com/r/NB8R9YL</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    📅 <strong>תזכורת מועדי העברה</strong> מגיעה ממנדיי למייל. בנוסף, לאחר חצי שנה ושנה וחצי לאחר סיום התכנית – סקרים לסטודנטים ולמנהלים הישירים.
+  </div>
+
+  <a href="https://lookerstudio.google.com/u/0/reporting/9c3612ff-711f-4d0d-999f-28508f507162/page/1M?s=losSJY2gsYU" target="_blank" class="link-card">
+    <div class="link-icon li-purple">📈</div>
+    <div class="link-card-body">
+      <div class="link-card-title">דשבורד תוצאות מחקר</div>
+      <div class="link-card-desc">Looker Studio – כל תוצאות המחקר מתחילת התכנית</div>
+    </div>
+    <div class="link-card-arrow">→</div>
+  </a>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ TOOLS ══ -->
+<section class="section" id="tools">
+  <div class="section-header">
+    <div class="section-icon">🛠️</div>
+    <h2>כלים ומערכות</h2>
+  </div>
+
+  <div class="info-block">
+    <h3>מערכת ה-CRM</h3>
+    <ul class="fancy-list">
+      <li>יש לוודא שכל כיתה נפתחה במערכת ה-CRM – בדרך כלל מנהלת התכנית דואגת לזה.</li>
+      <li>הסטודנטים נרשמים למערכת המידע לאחר קבלה סופית לכיתה – <strong>במהלך שיחת הפתיחה</strong> (תהליך הרישום לוקח כ-7 דקות).</li>
+      <li>מתוך מערכת המידע נבנה <strong>דשבורד סטטוס כלל כיתות עתידאים</strong> (כולל אוכלוסיות, סטטוס וכד').</li>
+      <li>בנוסף יש <strong>דשבורד ימי הולדת</strong> של כלל הסטודנטים שלך.</li>
+    </ul>
+  </div>
+
+  <div class="info-block">
+    <h3>כל הכלים במקום אחד</h3>
+    <div class="card-grid" style="margin-top:14px;margin-bottom:0;">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">מנדיי (Monday)</div>
+        <div class="card-body">ניהול משימות, תזכורות מחקר, תכנון עבודה שוטף.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🗃️</div>
+        <div class="card-title">SharePoint / Drive</div>
+        <div class="card-body">מסמכים, חוזים, קבצי Excel משותפים, מעקב התנדבויות.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <div class="card-title">CRM עמותה</div>
+        <div class="card-body">תיעוד שיחות, מעקב סטודנטים, דשבורד כיתות, ימי הולדת.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">PowerBI / Looker Studio</div>
+        <div class="card-body">דשבורד מיון, תוצאות מחקר מלווה, נתוני תכנית.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <div class="card-title">ווטסאפ</div>
+        <div class="card-body">קבוצת כיתה, תיאום שוטף עם סטודנטים ומעסיקים.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📧</div>
+        <div class="card-title">טימס / מייל</div>
+        <div class="card-body">תקשורת פנים-ארגונית, ישיבות צוות, תיאום עם שותפים.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <h3>קישורים חשובים</h3>
+    <a href="https://www.surveymonkey.com/r/S7N38S8" target="_blank" class="link-card">
+      <div class="link-icon li-teal">📝</div>
+      <div class="link-card-body">
+        <div class="link-card-title">סקר פתיחה כיתה</div>
+        <div class="link-card-desc">SurveyMonkey – להעביר בשיחת פתיחה</div>
+      </div>
+      <div class="link-card-arrow">→</div>
+    </a>
+    <a href="https://www.surveymonkey.com/r/S7FCZJX" target="_blank" class="link-card">
+      <div class="link-icon li-teal">📝</div>
+      <div class="link-card-body">
+        <div class="link-card-title">סקר אמצע התכנית</div>
+        <div class="link-card-desc">SurveyMonkey – להעביר באמצע</div>
+      </div>
+      <div class="link-card-arrow">→</div>
+    </a>
+    <a href="https://www.surveymonkey.com/r/NB8R9YL" target="_blank" class="link-card">
+      <div class="link-icon li-teal">📝</div>
+      <div class="link-card-body">
+        <div class="link-card-title">סקר סיום התכנית</div>
+        <div class="link-card-desc">SurveyMonkey – להעביר בחודש האחרון</div>
+      </div>
+      <div class="link-card-arrow">→</div>
+    </a>
+    <a href="https://foratidim.sharepoint.com/:x:/s/AtidimFoundation/IQBaYvcJQTLxT411UKHkvNICAXhXOR9t3nm7qMiED-uUrcg?e=1UdNBW" target="_blank" class="link-card">
+      <div class="link-icon li-green">📊</div>
+      <div class="link-card-body">
+        <div class="link-card-title">קובץ הזנת חשבוניות</div>
+        <div class="link-card-desc">SharePoint – ניהול תקציב</div>
+      </div>
+      <div class="link-card-arrow">→</div>
+    </a>
+    <a href="https://foratidim-my.sharepoint.com/:x:/g/personal/taasiya_atidim_org_il/IQCPUMOfsZWHSLzQQdzLRbL8AcUfPMOso4qzPHuni2pGNHo?e=462aoe" target="_blank" class="link-card">
+      <div class="link-icon li-purple">📋</div>
+      <div class="link-card-body">
+        <div class="link-card-title">גאנט העשרה ופיתוח אישי</div>
+        <div class="link-card-desc">SharePoint – תכנית פעילויות שנתית</div>
+      </div>
+      <div class="link-card-arrow">→</div>
+    </a>
+    <a href="https://app.powerbi.com/groups/7dbb3fd4-752f-4f9a-b924-2f9881ccbd55/reports/c59a617c-a367-49ce-b29a-bd7a14285811/dbc7b708a50470d7b57a?experience=power-bi" target="_blank" class="link-card">
+      <div class="link-icon li-blue">📊</div>
+      <div class="link-card-body">
+        <div class="link-card-title">דשבורד מיון – PowerBI</div>
+        <div class="link-card-desc">נתוני מיון וסטטוס מועמדים</div>
+      </div>
+      <div class="link-card-arrow">→</div>
+    </a>
+    <a href="https://lookerstudio.google.com/u/0/reporting/9c3612ff-711f-4d0d-999f-28508f507162/page/1M?s=losSJY2gsYU" target="_blank" class="link-card">
+      <div class="link-icon li-purple">📈</div>
+      <div class="link-card-body">
+        <div class="link-card-title">דשבורד מחקר מלווה</div>
+        <div class="link-card-desc">Looker Studio – תוצאות כל הסקרים</div>
+      </div>
+      <div class="link-card-arrow">→</div>
+    </a>
+    <a href="https://atidaim.co.il/" target="_blank" class="link-card">
+      <div class="link-icon li-teal">🌐</div>
+      <div class="link-card-body">
+        <div class="link-card-title">אתר תכנית עתידאים</div>
+        <div class="link-card-desc">atidaim.co.il – לשיתוף עם מועמדים ושותפים</div>
+      </div>
+      <div class="link-card-arrow">→</div>
+    </a>
+  </div>
+
+  <div class="understand-box">
+    <h4>✅ וידוא הבנה – כלים ומערכות</h4>
+    <div class="understand-items">
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">מכיר/ה את מערכת CRM</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">יודע/ת איך להזין חשבונית</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">מכיר/ה את דשבורד המיון</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">יודע/ת איפה הסקרים</div>
+      <div class="understand-tag" onclick="this.classList.toggle('confirmed')">מכיר/ה את גאנט ההעשרה</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>תיק חפיפה – תכנית עתידאים | זכור/י: בסדר לא לדעת הכל ביום הראשון 💚</p>
+  <p class="updated">עדכון אחרון: אפריל 2026</p>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){
+  var d=document.documentElement;
+  var p=(d.scrollTop/(d.scrollHeight-d.clientHeight))*100;
+  var pb=document.getElementById('pgbar');
+  if(pb) pb.style.width=p+'%';
+  document.querySelectorAll('.section').forEach(function(s){
+    var r=s.getBoundingClientRect();
+    if(r.top<=100&&r.bottom>=100){
+      document.querySelectorAll('.toc-item').forEach(function(t){t.classList.remove('active');});
+      var a=document.querySelector('.toc-item[href="#'+s.id+'"]');
+      if(a) a.classList.add('active');
+    }
+  });
+});
+
+function updateProgress(){
+  var all=document.querySelectorAll('.checklist-box');
+  var done=document.querySelectorAll('.checklist-box.done');
+  var pct=all.length ? Math.round((done.length/all.length)*100) : 0;
+  var fill=document.getElementById('prog-fill');
+  var text=document.getElementById('prog-text');
+  if(fill) fill.style.width=pct+'%';
+  if(text) text.textContent=done.length+' / '+all.length;
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.checklist-box').forEach(function(box){
+    box.addEventListener('click', function(e){
+      e.stopPropagation();
+      this.classList.toggle('done');
+      var li = this.closest('li');
+      if(li) li.classList.toggle('checked');
+      updateProgress();
+    });
+  });
+  updateProgress();
+});
+</script>
+</body>
+</html>
